@@ -50,7 +50,7 @@ namespace LabOne_tests
             Assert.Equal(expectedDirectioin, direction);
             Assert.StartsWith("B", direction);
             Assert.EndsWith("ward", direction);
-           
+
         }
 
         [Fact]
@@ -64,8 +64,22 @@ namespace LabOne_tests
 
             //Assert
             Assert.Matches("S[a-z]{5}d", direction);
-            
+            Assert.Contains("top", direction);
 
+        }
+
+        [Fact]
+        public void GetMyCar_AskForReference_Same()
+        {
+            //Arrange
+            Toyota toyota = new Toyota();
+            BMW myCar = new BMW();
+            //Act
+            Car car = toyota.GetMyCar();
+
+            //Assert
+            Assert.Same(toyota, car);
+            Assert.NotSame(myCar,car);
         }
 
 
